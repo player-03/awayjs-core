@@ -1259,14 +1259,14 @@ export class Matrix3D {
 		return target;
 	}
 
-	public transformVector(vector: Vector3D, target: Vector3D = null): Vector3D {
+	public transformVector(vector: Vector3D, target: Vector3D = null, ignoreW: boolean = false): Vector3D {
 		if (vector == null)
 			throw new ArgumentError('ArgumentError, vector cannot be null');
 
 		const x: number = vector.x;
 		const y: number = vector.y;
 		const z: number = vector.z;
-		const w: number = vector.w;
+		const w: number = ignoreW? 1: vector.w;
 
 		if (!target)
 			target = new Vector3D();
