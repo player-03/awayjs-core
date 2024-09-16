@@ -1266,7 +1266,7 @@ export class Matrix3D {
 		const x: number = vector.x;
 		const y: number = vector.y;
 		const z: number = vector.z;
-		const w: number = ignoreW? 1: vector.w;
+		const w: number = ignoreW ? 1 : vector.w;
 
 		if (!target)
 			target = new Vector3D();
