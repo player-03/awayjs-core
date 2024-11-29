@@ -727,16 +727,16 @@ export class Matrix3D {
 			}
 			case Orientation3D.EULER_ANGLES:
 
-				rot.y = Math.asin(-colX.z);
+				rot.y = Math.asin(-colX.z) * MathConsts.RADIANS_TO_DEGREES;
 
 				//var cos:number = Math.cos(rot.y);
 
 				if (colX.z != 1 && colX.z != -1) {
-					rot.x = Math.atan2(colY.z, colZ.z);
-					rot.z = Math.atan2(colX.y, colX.x);
+					rot.x = Math.atan2(colY.z, colZ.z) * MathConsts.RADIANS_TO_DEGREES;
+					rot.z = Math.atan2(colX.y, colX.x) * MathConsts.RADIANS_TO_DEGREES;
 				} else {
 					rot.z = 0;
-					rot.x = Math.atan2(colY.x, colY.y);
+					rot.x = Math.atan2(colY.x, colY.y) * MathConsts.RADIANS_TO_DEGREES;
 				}
 
 				break;
@@ -1059,7 +1059,7 @@ export class Matrix3D {
 
 		const rotation: Vector3D = components[1];
 		if (rotation) {
-			let angle: number = -rotation.x;
+			let angle: number = -rotation.x * MathConsts.DEGREES_TO_RADIANS;
 			if (angle != 0) {
 				sin = Math.sin(angle);
 				cos = Math.cos(angle);
@@ -1081,7 +1081,7 @@ export class Matrix3D {
 
 				this.append(Matrix3D._tempMatrix);
 			}
-			angle = -rotation.y;
+			angle = -rotation.y * MathConsts.DEGREES_TO_RADIANS;
 			if (angle != 0) {
 				sin = Math.sin(angle);
 				cos = Math.cos(angle);
@@ -1103,7 +1103,7 @@ export class Matrix3D {
 
 				this.append(Matrix3D._tempMatrix);
 			}
-			angle = -rotation.z;
+			angle = -rotation.z * MathConsts.DEGREES_TO_RADIANS;
 			if (angle != 0) {
 				sin = Math.sin(angle);
 				cos = Math.cos(angle);
