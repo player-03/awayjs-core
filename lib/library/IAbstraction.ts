@@ -5,7 +5,7 @@ import { IAsset } from './IAsset';
 export interface IAbstraction extends IAsset
 {
 	asset: IAsset;
-	
+
 	init(asset: IAsset, pool: IAbstractionPool): void;
 
 	onClear(event: AssetEvent): void;

@@ -19,8 +19,7 @@ export class AbstractionBase extends AssetBase implements IAbstraction {
 
 	protected _invalid: boolean = true;
 
-	public get asset(): IAsset
-	{
+	public get asset(): IAsset {
 		return this._asset;
 	}
 

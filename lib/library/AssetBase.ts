@@ -123,7 +123,6 @@ export class AssetBase extends EventDispatcher implements IAsset, IAssetAdapter 
 		delete this._abstractionPool[pool.id];
 	}
 
-
 	public getNewAbstraction(pool: IAbstractionPool): IAbstraction {
 		const abstraction: IAbstraction = pool.requestAbstraction(this);
 		abstraction.init(this, pool);
