@@ -115,10 +115,18 @@ export class AssetBase extends EventDispatcher implements IAsset, IAssetAdapter 
 
 	public getAbstraction <T extends AbstractionBase>(pool: IAbstractionPool): T {
 		return <T> this._abstractionPool[pool.id]
-			|| <T> (this._abstractionPool[pool.id] = new (pool.requestAbstraction(this))(this, pool));
+			|| <T> (this._abstractionPool[pool.id] = this.getNewAbstraction(pool));
 	}
 
 	public clearAbstraction(pool: IAbstractionPool) {
+		pool.storeAbstraction(this._abstractionPool[pool.id]);
 		delete this._abstractionPool[pool.id];
+	}
+
+
+	public getNewAbstraction(pool: IAbstractionPool): IAbstraction {
+		const abstraction: IAbstraction = pool.requestAbstraction(this);
+		abstraction.init(this, pool);
+		return abstraction;
 	}
 }

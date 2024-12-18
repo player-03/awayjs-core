@@ -19,17 +19,26 @@ export class AbstractionBase extends AssetBase implements IAbstraction {
 
 	protected _invalid: boolean = true;
 
-	constructor(asset: IAsset, pool: IAbstractionPool) {
-		super();
+	public get asset(): IAsset
+	{
+		return this._asset;
+	}
 
-		this._asset = asset;
-		this._pool = pool;
+	constructor() {
+		super();
 
 		this._onClearDelegate = (event: AssetEvent) => this.onClear(event);
 		this._onInvalidateDelegate = (event: AssetEvent) => this.onInvalidate(event);
+	}
+
+	public init(asset: IAsset, pool: IAbstractionPool): void {
+		this._asset = asset;
+		this._pool = pool;
 
 		this._asset.addEventListener(AssetEvent.CLEAR, this._onClearDelegate);
 		this._asset.addEventListener(AssetEvent.INVALIDATE, this._onInvalidateDelegate);
+
+		this._invalid = true;
 	}
 
 	/**

@@ -13,5 +13,5 @@ export interface IAbstractionClass
 	/**
 	 *
 	 */
-	new(asset: IAsset, pool: IAbstractionPool): IAbstraction;
+	new(): IAbstraction;
 }
